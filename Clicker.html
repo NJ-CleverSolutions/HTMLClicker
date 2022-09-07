@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+	<title>Clicker</title>
+    </head>
+    <body style="margin:0px;">
+	<script>
+		var income = 0;
+		var rate = 1;
+
+		var clickValue = 1;
+
+		var autoClickValue = 1;
+		var autoClickTime = 1000;
+
+		var multiplier = 0;
+
+		var interval;
+
+		function production(x){
+			income += Math.round(.5*Math.log(x) + 7.7*rate.toExponential(multiplier));
+		}
+		function clicker(){
+			income += clickValue;
+			document.getElementById('income').innerHTML = income;
+		}
+		function autoClick(){
+			income += autoClickValue;
+			document.getElementById('income').innerHTML = income;
+		}
+		interval = setInterval("autoClick()",autoClickTime);
+	</script>
+	
+	<div style="background-color:saddlebrown;color:white;padding:10px;text-align:center;height:100vh;position:relative;border:0px;">
+		<div style="background-color:black;padding:10px;margin:-10px;">
+        		$
+        		<span id="income">477</span><br>
+		</div>
+		<button onclick="clicker()">Click</button>
+	</div>
+    </body>
+</html>
